@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'bmi_result_screen.dart';
 
 class BMICalculator extends StatefulWidget {
   BMICalculator({Key? key}) : super(key: key);
@@ -128,24 +129,46 @@ class _BMICalculatorState extends State<BMICalculator> {
                                             Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: <Widget> [
-                                                    Container(
-                                                        width: 40,
-                                                        height: 40,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(25),
-                                                            color: Colors.blue.shade900,
+                                                    GestureDetector(
+                                                        child: Container(
+                                                            width: 40,
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius: BorderRadius.circular(25),
+                                                                color: Colors.blue.shade900,
+                                                            ),
+                                                            child: Icon(Icons.remove, size: 35),
                                                         ),
-                                                        child: Icon(Icons.remove, size: 35),
+                                                        onTap: () {
+                                                            setState(
+                                                                (){
+                                                                    if (_weight == 0){
+                                                                        return;
+                                                                    }
+                                                                    _weight -= 1;
+                                                                }
+                                                            );
+                                                        }
                                                     ),
                                                     SizedBox(width:15),
-                                                    Container(
-                                                        width: 40,
-                                                        height: 40,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(25),
-                                                            color: Colors.blue.shade900,
+                                                    GestureDetector(
+                                                        child: Container(
+                                                            width: 40,
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius: BorderRadius.circular(25),
+                                                                color: Colors.blue.shade900,
+                                                            ),
+                                                            child: Icon(Icons.add, size: 35),
                                                         ),
-                                                        child: Icon(Icons.add, size: 35),
+                                                        
+                                                        onTap: () {
+                                                            setState(
+                                                                (){
+                                                                    _weight += 1;
+                                                                }
+                                                            );
+                                                        }
                                                     ),
                                                 ],
                                             ),
@@ -169,24 +192,45 @@ class _BMICalculatorState extends State<BMICalculator> {
                                             Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: <Widget> [
-                                                    Container(
-                                                        width: 40,
-                                                        height: 40,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(25),
-                                                            color: Colors.blue.shade900,
+                                                    GestureDetector(
+                                                        child: Container(
+                                                            width: 40,
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius: BorderRadius.circular(25),
+                                                                color: Colors.blue.shade900,
+                                                            ),
+                                                            child: Icon(Icons.remove, size: 35),
                                                         ),
-                                                        child: Icon(Icons.remove, size: 35),
+                                                        onTap: () {
+                                                            setState(
+                                                                () {
+                                                                    if (_age == 100){
+                                                                        return;
+                                                                    }
+                                                                    _age -= 1;
+                                                                }
+                                                            );
+                                                        }
                                                     ),
                                                     SizedBox(width:15),
-                                                    Container(
-                                                        width: 40,
-                                                        height: 40,
-                                                        decoration: BoxDecoration(
-                                                            borderRadius: BorderRadius.circular(25),
-                                                            color: Colors.blue.shade900,
+                                                    GestureDetector(
+                                                        child: Container(
+                                                            width: 40,
+                                                            height: 40,
+                                                            decoration: BoxDecoration(
+                                                                borderRadius: BorderRadius.circular(25),
+                                                                color: Colors.blue.shade900,
+                                                            ),
+                                                            child: Icon(Icons.add, size: 35),
                                                         ),
-                                                        child: Icon(Icons.add, size: 35),
+                                                        onTap: () {
+                                                            setState(
+                                                                () {
+                                                                    _age += 1;
+                                                                }
+                                                            );
+                                                        }
                                                     ),
                                                 ],
                                             ),
@@ -213,6 +257,13 @@ class _BMICalculatorState extends State<BMICalculator> {
                             ),
                             color: Colors.purple,
                             onPressed: () {
+                                Navigator.push(
+                                    context, MaterialPageRoute(
+                                        builder: (context) {
+                                            return BMIResult(age:_age, male:_male, weight:_weight, height:_height);
+                                        }
+                                    )
+                                );
                             },
                         ),
                     ),

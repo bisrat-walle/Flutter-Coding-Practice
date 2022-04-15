@@ -34,20 +34,26 @@ class _BMICalculatorState extends State<BMICalculator> {
                         child: Row(
                         children: <Widget> [
                             Expanded(
-                                child: Container(
-                                    padding: EdgeInsets.all(15),
-                                    decoration: BoxDecoration(
-                                        color: Colors.grey.shade900,
-                                        borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget> [
-                                            Icon(Icons.male, size: 60),
-                                            Text("MALE", style: Theme.of(context).textTheme.headline6)
-                                        ],
-                                    ),
+                                child: Material(
+                                    child: InkWell(
+                                        child: Container(
+                                            padding: EdgeInsets.all(15),
+                                            decoration: BoxDecoration(
+                                                color: Colors.grey.shade900,
+                                                borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: <Widget> [
+                                                    Icon(Icons.male, size: 60),
+                                                    Text("MALE", style: Theme.of(context).textTheme.headline6)
+                                                ],
+                                            ),
+                                        ),
+                                        onTap: () {},
+                                    )
                                 ),
+                                
                             ),
                             SizedBox(width: 15),
                             Expanded(
